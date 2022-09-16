@@ -65,12 +65,12 @@ namespace DiscoveryTests
         {
             MailboxAuthenticationSettings mailboxAuthenticationSettings = new MailboxAuthenticationSettings
             {
-                EndPoint = "https://exo.mecdemo.msgdevelop.com/ews/exchange.asmx",
+                EndPoint = "https://htestv2.mecdemo.msgdevelop.com/ews/exchange.asmx",
                 ClientId = "d66f79ab-9457-46ba-b544-abda1ef1e3f4",
                 Tenantid = "13af9f3c-b494-4795-bb19-f8364545cd00",
                 CertificateFileName = "c:\\temp\\hbc.pfx",
-                CertificatePassword = new NetworkCredential("", "xxxx").SecurePassword,
-                Scope = "https://exo.mecdemo.msgdevelop.com/.default"
+                CertificatePassword = new NetworkCredential("", "xxx").SecurePassword,
+                Scope = "https://htestv2.mecdemo.msgdevelop.com/.default"
             };
             var ewsClient = new DiscoveryLibraryEWSAndGraph.EwsClient(mailboxAuthenticationSettings);
             var InboxCount = ewsClient.GetInboxItemCount("onpremuser1@mecdemo.msgdevelop.com");
@@ -83,7 +83,7 @@ namespace DiscoveryTests
             {
                 ClientId = "d66f79ab-9457-46ba-b544-abda1ef1e3f4",
                 CertificateFileName = "c:\\temp\\hbc.pfx",
-                CertificatePassword = new NetworkCredential("", "xxxx").SecurePassword,
+                CertificatePassword = new NetworkCredential("", "xxx").SecurePassword,
             };
             var mailboxToAccess = "onpremuser1@mecdemo.msgdevelop.com";
             var discoveryClient = new DiscoveryLibraryEWSAndGraph.DiscoveryClient();

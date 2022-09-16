@@ -16,8 +16,24 @@ namespace DiscoveryLibraryEWSAndGraph
         public EwsClient(MailboxAuthenticationSettings mailboxAuthenticationSettings) : base(mailboxAuthenticationSettings)
         {
             Service = new ExchangeService(ExchangeVersion.Exchange2016);
-            MSALAppTokenClass mSALAppToken = new MSALAppTokenClass(mailboxAuthenticationSettings);
-            Service.Credentials = mSALAppToken;
+            if(mailboxAuthenticationSettings.Scope == null && mailboxAuthenticationSettings.UserCredential != null)
+            {
+                Service.Credentials = mailboxAuthenticationSettings.UserCredential;
+                if (mailboxAuthenticationSettings.Scope != null)
+                {
+                    Service.Url = new Uri(mailboxAuthenticationSettings.EndPoint);
+                }
+                else
+                {
+                    Service.AutodiscoverUrl(mailboxAuthenticationSettings.UserCredential.UserName);
+                }
+                
+            }
+            else
+            {
+                MSALAppTokenClass mSALAppToken = new MSALAppTokenClass(mailboxAuthenticationSettings);
+                Service.Credentials = mSALAppToken;
+            }
             Service.Url = new Uri(mailboxAuthenticationSettings.EndPoint);
         }
 

@@ -95,10 +95,9 @@ namespace DiscoveryLibraryEWSAndGraph
             return null;
         }
 
-        public bool CheckForHybridModernAuthentication(string mailbox, string tenantId)
+        public bool CheckForHybridModernAuthentication(string ewsUrl, string tenantId)
         {
             string trustedIssuer = $"00000001-0000-0000-c000-000000000000@{tenantId}";
-            var ewsUrl = AutoDiscoverV2(mailbox, "outlook.office365.com", true);
             using(HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");

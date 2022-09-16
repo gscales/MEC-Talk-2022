@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 using System.Security;
 
 namespace DiscoveryLibraryEWSAndGraph
@@ -15,5 +16,6 @@ namespace DiscoveryLibraryEWSAndGraph
         public string CertificateFileName { get; set; }
         public SecureString CertificatePassword { get; set; }
         public string Scope { get; set; }
+        public NetworkCredential UserCredential { get; set; }
     }
 }
